@@ -4,10 +4,10 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const isProd = process.env.NODE_ENV === 'production' // определяем в каком режиме разработки находимся prod or dev
-const isDev = !isProd // данное значение присваивается в package.json перед запуском
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = !isProd
 
-const filename = (ext) => isDev ? ` bundle.${ext}` : ` bundle.[hash].${ext}` // генерируем имя файлов в зависимости с режимом разработки
+const filename = (ext) => isDev ? ` bundle.${ext}` : ` bundle.[hash].${ext}`
 
 console.log(isDev, 'isDev')
 console.log(isProd, 'isProd')
@@ -21,11 +21,6 @@ const jsLoaders = () => {
       },
     },
   ]
-
-  if (isDev) {
-    loaders.push('eslint-loader')
-  }
-
 
   return loaders
 }
@@ -57,8 +52,8 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: 'index.html',
       minify: {
-        removeComments: isProd, // удаляет коментарии в зависимости от режима разработки
-        collapseWhitespace: isProd, // удаляет пробелы в зависимости от режима разработки
+        removeComments: isProd,
+        collapseWhitespace: isProd,
       },
     }),
     new CopyPlugin({
