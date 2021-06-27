@@ -1,0 +1,19 @@
+{
+  "name": "to-do-js",
+  "version": "1.0.0",
+  "description": "to-do list js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuriiDzyuba/to-do-js.git"
+  },
+  "author": "yurii dziuba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuriiDzyuba/to-do-js/issues"
+  },
+  "homepage": "https://github.com/YuriiDzyuba/to-do-js#readme"
+}
