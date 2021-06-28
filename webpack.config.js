@@ -39,6 +39,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'scc'),
       '@core': path.resolve(__dirname, 'src/core'),
+      '@ico': path.resolve(__dirname, 'src/img/icons'),
     },
   },
   // devtool: isDev ? "source-map" : false,          //https://webpack.js.org/configuration/devtool/#qualities
@@ -56,14 +57,14 @@ module.exports = {
         collapseWhitespace: isProd,
       },
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist'),
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, 'src/favicon.ico'),
+    //       to: path.resolve(__dirname, 'dist'),
+    //     },
+    //   ],
+    // }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
@@ -92,6 +93,16 @@ module.exports = {
         test: /\.js$/,
         use: ['source-map-loader'],
         enforce: 'pre',
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {
+            // make all svg images to work in IE
+            iesafe: true,
+          },
+        },
       },
     ],
   },
