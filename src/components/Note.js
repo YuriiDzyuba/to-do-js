@@ -16,7 +16,6 @@ export class Note extends AppComponent {
     }
 
     toHTML() {
-        console.log(this.data.changedDate,"this.data.changedDate")
         return (
             `
         <div class="row todoItem mt-2">

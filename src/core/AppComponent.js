@@ -12,6 +12,9 @@ export class AppComponent {
 
     onSubmit(event) {
         event.preventDefault();
+
+        let regExp = /^[0-9a-zA-Zа-яА-ЯіІїЇєЄ ёЁ-]{3,245}$/g;
+
         if (this.data.id) {
             if (event.target.id === `form-${this.data.id}`) {
                 let form = {
@@ -20,7 +23,9 @@ export class AppComponent {
                     name: event.target.elements["name"].value,
                     content: event.target.elements["content"].value,
                 }
-                store.updateData(this.data.id, form)
+                if (regExp.test(form.name)) {
+                    store.updateData(this.data.id, form)
+                }  else alert("check name")
             }
         } else {
             if (event.target.id === `form-${this.data.id}`) {
@@ -31,7 +36,10 @@ export class AppComponent {
                     content: event.target.elements["content"].value,
                 }
 
-                store.addNewNote(form)
+                if (regExp.test(form.name)){
+                    store.addNewNote(form)
+                } else alert("check name")
+
             }
         }
     }

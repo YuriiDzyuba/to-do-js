@@ -102,16 +102,6 @@ export class NewNoteForm extends AppComponent {
               </button>
       </div>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 `
 
 
