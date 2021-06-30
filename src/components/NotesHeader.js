@@ -29,9 +29,18 @@ export class NotesHeader extends AppComponent {
                     <h6>Dates</h6>
                 </div>
                 <div class="col-2 text-end ">
-                    <img alt="" src=${this.type==="archived"? "" : edit}/>
-                    <img alt="" src=${this.type==="archived"? upload : download}/>
-                    <img alt="" src=${trash}/>
+                    <img 
+                    alt="" 
+                    src=${this.type==="archived"? "" : edit}
+                    />
+                    <img 
+                    alt="" 
+                    src=${this.type==="archived"? upload : download}
+                    />
+                    <img 
+                    alt="" 
+                    src=${trash}
+                    />
                 </div>
          </div>
     `);

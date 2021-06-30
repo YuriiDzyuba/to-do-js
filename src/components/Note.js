@@ -21,7 +21,14 @@ export class Note extends AppComponent {
         <div class="row todoItem mt-2">
             <div class="col-2 todoItem__desc">
                 <span>
-                <p><img alt="" class="todoItem__img" src=${getImage(this.data.category)}/>${this.data.name}</p>
+                <p>
+                <img 
+                alt="" 
+                class="todoItem__img" 
+                src=${getImage(this.data.category)}
+                />
+                ${this.data.name}
+                </p>
                 </span>
             </div>
             <div class="col-2 todoItem__desc">
@@ -38,16 +45,19 @@ export class Note extends AppComponent {
             </div>
             <div class="col-2 text-end todoItem__buttonsBlock ">
                 <img 
+                alt=""
                 src=${edit}
                 id=ed-${this.data.id}
                 class=${this.type==="archived"? "d-none": ""}
                 />
                 <img 
+                alt=""
                 src=${this.type==="archived"? upload : download}
                 id=arch-${this.data.id}
                 
                 />
                 <img 
+                alt=""
                 src=${trash}
                 id=del-${this.data.id}
                 />
