@@ -1,16 +1,14 @@
 import {CategoryNote} from "./CategoryNote";
 import {AllNotesHeader} from "./AllNotesHeader";
 import {Note} from "./Note";
-import {ArchivedNotesHeader} from "./ArchivedNotesHeader";
-import {ActiveNotesHeader} from "./ActiveNotesHeader";
 import {NewNoteForm} from "./NewNoteForm";
+import {NotesHeader} from "./NotesHeader";
 
 export const App = (selector, obj) => {
     let app = document.querySelector(selector)
     let activeNotes = obj.state.byGroup.active || []
     let archivedNotes = obj.state.byGroup.archived || []
     let sortedNotes = obj.state.byCategory
-    let state = obj.state
     let domElements = []
 
     const getSortedNotes =() => {
@@ -32,42 +30,22 @@ export const App = (selector, obj) => {
         return container
     }
 
-    const getActiveNotesSection =() => {
-
-        const container = document.createElement("div")
-        let note = document.createElement("div")
-        note.classList.add(ActiveNotesHeader.className())
-        const header = new ActiveNotesHeader(note)
-        note.innerHTML = header.toHTML()
-        container.append(note)
-
-        activeNotes.forEach(itemState => {
-            let note = document.createElement("div")
-            note.classList.add(Note.className())
-            const activeNoteItem = new Note(note, itemState, "active")
-            domElements.push(activeNoteItem)
-            note.innerHTML = activeNoteItem.toHTML()
-            container.append(note)
-        })
-        return container
-    }
-
-    const getArchiveNotesSection =() =>  {
+    const getNoteItems = (notesArr,type) => {
 
         const container = document.createElement("div")
         let note = document.createElement("div")
 
-        note.classList.add(ArchivedNotesHeader.className())
-        const header = new ArchivedNotesHeader(note)
+        note.classList.add(NotesHeader.className())
+        const header = new NotesHeader(note,[],type)
         note.innerHTML = header.toHTML()
         container.append(note)
 
-        archivedNotes.forEach(itemState => {
+        notesArr.forEach(itemState => {
             let note = document.createElement("div")
             note.classList.add(Note.className())
-            const archiveNoteItem = new Note(note, itemState, "archived")
-            domElements.push(archiveNoteItem)
-            note.innerHTML = archiveNoteItem.toHTML()
+            const noteItem = new Note(note, itemState, type)
+            domElements.push(noteItem)
+            note.innerHTML = noteItem.toHTML()
             container.append(note)
         })
         return container
@@ -81,23 +59,20 @@ export const App = (selector, obj) => {
         domElements.push(newNoteForm)
         note.innerHTML = newNoteForm.toHTML()
         container.append(note)
-
         return container
     }
-
 
     const getRoot = () =>  {
         const root = document.createElement("div")
         root.classList.add("container")
-        root.append(getActiveNotesSection())
+        root.append(getNoteItems(activeNotes,"active"))
         root.append(getNewNoteForm())
         root.append(getSortedNotes())
-        root.append(getArchiveNotesSection())
+        root.append(getNoteItems(archivedNotes,"archived"))
         return root
     }
 
     const clearApp= () => {
-        console.log(app,"app()")
         if (app.firstChild) {
             app.removeChild(app.firstChild)
         }
@@ -105,9 +80,7 @@ export const App = (selector, obj) => {
     }
 
     const render = () => {
-        console.log(state,"state()")
         app.append(getRoot())
-        console.log(domElements, "domElements")
         domElements.forEach(note => note.init())
 
     }

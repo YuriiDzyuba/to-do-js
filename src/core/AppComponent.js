@@ -8,7 +8,6 @@ export class AppComponent {
         this.root = root
         this.data = data
         this.type = type
-
     }
 
     onSubmit(event) {
@@ -62,6 +61,5 @@ export class AppComponent {
     toHTML() {
         return ""
     }
-
 
 }

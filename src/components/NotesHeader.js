@@ -1,9 +1,13 @@
 import {AppComponent} from "@core/AppComponent";
+import trash from '../img/icons/trashWhite.svg';
+import download from '../img/icons/downloadWhite.svg';
+import upload from '../img/icons/uploadWhite.svg';
+import edit from '../img/icons/editWhite.svg';
 
-export class ArchivedNotesHeader extends AppComponent{
+export class NotesHeader extends AppComponent {
 
     static className() {
-        return 'archivedNotesHeader'
+        return 'activeNoteHeader'
     }
 
     toHTML() {
@@ -25,11 +29,13 @@ export class ArchivedNotesHeader extends AppComponent{
                     <h6>Dates</h6>
                 </div>
                 <div class="col-2 text-end ">
-                    <img alt="" src={props.isNotesActive ? editItem : null}/>
-                    <img alt="" src={props.isNotesActive ? archiveIcon : unArchiveIcon}/>
-                    <img alt="" src={trashIcon}/>
+                    <img alt="" src=${this.type==="archived"? "" : edit}/>
+                    <img alt="" src=${this.type==="archived"? upload : download}/>
+                    <img alt="" src=${trash}/>
                 </div>
          </div>
     `);
     }
 }
+
+

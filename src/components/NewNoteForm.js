@@ -27,7 +27,6 @@ export class NewNoteForm extends AppComponent {
     }
 
     toHTML() {
-        console.log(this.root.querySelector("#ed"), "this.root")
         return (
             `
         <form id=form-${this.data.id} class="row form d-none">
