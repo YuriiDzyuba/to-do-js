@@ -22,11 +22,11 @@ export class Note extends AppComponent {
             <div class="col-2 todoItem__desc">
                 <span>
                 <p>
-                <img 
-                alt="" 
-                class="todoItem__img" 
-                src=${getImage(this.data.category)}
-                />
+                    <img 
+                    alt="" 
+                    class="todoItem__img" 
+                    src=${getImage(this.data.category)}
+                    />
                 ${this.data.name}
                 </p>
                 </span>

@@ -18,7 +18,8 @@ export class CategoryNote extends AppComponent{
                             class="todoItem__img" 
                             src=${getImage(this.data.category)}
                             />
-                        ${this.data.category}</p>
+                        ${this.data.category}
+                        </p>
                     </span>
                 </div>
                 <div class="col-3 todoItem__desc">
